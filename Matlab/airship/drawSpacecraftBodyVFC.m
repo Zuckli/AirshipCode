@@ -25,7 +25,6 @@ fprintf("U %.3f V %.3f\n",u_wind,v_wind);
     persistent facecolors;
     persistent windArrowHandle;
     persistent trajectory;
-    persistent pos0;
 
 if t==0
     figure(1); clf;
@@ -36,7 +35,7 @@ if t==0
     hold on
     trajectory = drawtrajectory(pn, pe, pd,[]);
     hold on
-    windArrowHandle = drawSpacewindBody(pn, pe, pd,pos0,[],u_wind,v_wind,w_wind,scale);
+    windArrowHandle = drawSpacewindBody(pn, pe, pd,[],u_wind,v_wind,w_wind,scale);
     
     title('SpaceCraft')
     xlabel('East')
@@ -48,12 +47,8 @@ if t==0
 
     % at every other time step, redraw box
 else
-
-    px = (pn-pos0(1))/2;
-    py = (pe-pos0(2))/2;
-    pz = (pd-pos0(3))/2;
     drawSpacecraftBody(Vertices, Faces, facecolors, pn, pe, pd, phi, theta, psi, aircraftOrigin);
-    drawSpacewindBody(pn, pe, pd,pos0, windArrowHandle,u_wind,v_wind,w_wind,scale); 
+    drawSpacewindBody(pn, pe, pd, windArrowHandle,u_wind,v_wind,w_wind,scale); 
     drawtrajectory(pn, pe, pd,trajectory);
     axis([-50*scale+pn,50*scale+pn,-50*scale+pe,50*scale+pe,-50*scale+pd, 50*scale+pd]);
 %     axis([-(50+px)*scale+pn,(50+px)*scale+pn,-(50+py)*scale+pe,(50+py)*scale+pe,-(50+pz)*scale+pd, (50+pz)*scale+pd]);
@@ -62,7 +57,7 @@ end
 end
 
 %
-function handle = drawSpacewindBody(pn, pe, pd,pos0,handle,u_wind,v_wind,w_wind,scale)
+function handle = drawSpacewindBody(pn, pe, pd,handle,u_wind,v_wind,w_wind,scale)
 
 
 [X,Y,Z] = meshgrid(-50*scale+pn:100*scale*0.333:50*scale+pn,-50*scale+pe:100*scale*0.333:50*scale+pe,-50*scale+pd:100*scale*0.333:50*scale+pd);
