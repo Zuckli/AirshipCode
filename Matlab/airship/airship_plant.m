@@ -189,7 +189,7 @@ dxt = R*yt; % yt = [p;q;r;ut;v;w];
 dyt = M \ F;
 
 % sys = [dxt;dyt];
-sys = [dxt(1) dxt(2) dxt(3) dxt(4)+10 dxt(5) dxt(6) dyt(1) dyt(2) dyt(3) dyt(4) dyt(5) dyt(6)];
+sys = [dxt(1) dxt(2) dxt(3) dxt(4) dxt(5) dxt(6) dyt(1) dyt(2) dyt(3) dyt(4) dyt(5) dyt(6)];
 
 % end mdlDerivatives
 

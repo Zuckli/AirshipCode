@@ -30,6 +30,7 @@ fprintf("U %.3f V %.3f\n",u_wind,v_wind);
 if t==0
     figure(1); clf;
     pos0 = [pn,pe,pd];
+    plot3(pn,pe,pd,'b-*','MarkerSize',5);
     [Vertices, Faces, facecolors] = defineSpaceCraftBody;
     aircraftOrigin = drawSpacecraftBody(Vertices, Faces, facecolors, pn, pe, pd, phi, theta, psi, []);
     hold on
@@ -63,9 +64,6 @@ end
 %
 function handle = drawSpacewindBody(pn, pe, pd,pos0,handle,u_wind,v_wind,w_wind,scale)
 
-px = (pn-pos0(1))/2;
-py = (pe-pos0(2))/2;
-pz = (pd-pos0(3))/2;
 
 [X,Y,Z] = meshgrid(-50*scale+pn:100*scale*0.333:50*scale+pn,-50*scale+pe:100*scale*0.333:50*scale+pe,-50*scale+pd:100*scale*0.333:50*scale+pd);
 
